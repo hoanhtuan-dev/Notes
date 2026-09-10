@@ -33,7 +33,7 @@ python3 -m vllm.entrypoints.openai.api_server \
   --model Qwen/Qwen3.8-27B \
   --host 0.0.0.0 \
   --port 8000 \
-  --api-key atd-api-276813
+  --api-key atd-api-276813 > vllm.log 2>&1 &
 
 ```
 
