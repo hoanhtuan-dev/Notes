@@ -51,6 +51,24 @@ VLLM_USE_V1=0 nohup python3 -m vllm.entrypoints.openai.api_server \
 tail -f vllm.log
 ```
 
+```
+vllm serve unsloth/Qwen3.8-27B-NVFP4 \
+  --host 0.0.0.0 \
+  --port 8000 \
+  --api-key "atd-api-276813" \
+  --served-model-name "qwen3.8-27b" \
+  --quantization modelopt \
+  --tensor-parallel-size 1 \
+  --max-model-len 8192 \
+  --gpu-memory-utilization 0.92 \
+  --kv-cache-dtype fp8 \
+  --reasoning-parser qwen3 \
+  --enable-auto-tool-choice \
+  --tool-call-parser qwen3_coder \
+  --trust-remote-code \
+  --disable-log-requests
+```
+
 
 > **Ghi chú:**
 > * **API Key của bạn:** `my-secret-api-key-12345` *(bạn có thể đổi thành chuỗi tùy ý)*.
