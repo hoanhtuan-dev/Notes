@@ -37,6 +37,21 @@ python3 -m vllm.entrypoints.openai.api_server \
 
 ```
 
+```
+VLLM_USE_V1=0 nohup python3 -m vllm.entrypoints.openai.api_server \
+  --model Qwen/Qwen3.8-27B \
+  --host 0.0.0.0 \
+  --port 8000 \
+  --api-key sk-atd-api-276813 \
+  --gpu-memory-utilization 0.85 \
+  --max-model-len 8192 \
+  --enforce-eager > vllm.log 2>&1 &
+
+# Theo dõi log thời gian thực
+tail -f vllm.log
+```
+
+
 > **Ghi chú:**
 > * **API Key của bạn:** `my-secret-api-key-12345` *(bạn có thể đổi thành chuỗi tùy ý)*.
 > * **Base URL API:** `[http://n3.ckey.vn:1365/v1](http://n3.ckey.vn:1365/v1)` *(nhìn từ mục `vLLM API` trên ảnh của bạn: `[http://n3.ckey.vn:1365](http://n3.ckey.vn:1365)`)*.
