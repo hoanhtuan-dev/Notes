@@ -64,7 +64,7 @@ vllm serve unsloth/Qwen3.8-27B-NVFP4 \
   --reasoning-parser qwen3 \
   --enable-auto-tool-choice \
   --tool-call-parser qwen3_coder \
-  --trust-remote-code \
+  --trust-remote-code 
 ```
 
 > **Ghi chú:**
