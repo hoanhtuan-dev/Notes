@@ -30,10 +30,10 @@ Trong màn hình Terminal (TTYD hoặc SSH), bạn thực hiện chạy lệnh v
 
 ```bash
 python3 -m vllm.entrypoints.openai.api_server \
-  --model Qwen/Qwen2.5-7B-Instruct \
+  --model Qwen/qwen3.8:27b \
   --host 0.0.0.0 \
   --port 8000 \
-  --api-key my-secret-api-key-12345
+  --api-key atd-api-276813
 
 ```
 
