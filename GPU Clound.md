@@ -44,7 +44,7 @@ VLLM_USE_V1=0 nohup python3 -m vllm.entrypoints.openai.api_server \
   --port 8000 \
   --api-key sk-atd-api-276813 \
   --gpu-memory-utilization 0.85 \
-  --max-model-len 8192 \
+  --max-model-len 4096 \
   --enforce-eager > vllm.log 2>&1 &
 
 # Theo dõi log thời gian thực
