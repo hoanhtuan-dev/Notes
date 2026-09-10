@@ -57,7 +57,6 @@ vllm serve unsloth/Qwen3.8-27B-NVFP4 \
   --port 8000 \
   --api-key "atd-api-276813" \
   --served-model-name "qwen3.8-27b" \
-  --quantization modelopt \
   --tensor-parallel-size 1 \
   --max-model-len 8192 \
   --gpu-memory-utilization 0.92 \
@@ -66,9 +65,7 @@ vllm serve unsloth/Qwen3.8-27B-NVFP4 \
   --enable-auto-tool-choice \
   --tool-call-parser qwen3_coder \
   --trust-remote-code \
-  --disable-log-requests
 ```
-
 
 > **Ghi chú:**
 > * **API Key của bạn:** `my-secret-api-key-12345` *(bạn có thể đổi thành chuỗi tùy ý)*.
