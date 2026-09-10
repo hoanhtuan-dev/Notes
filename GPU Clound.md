@@ -69,3 +69,63 @@ print(response.choices[0].message.content)
 ```
 
 *(Lưu ý: Nếu container tự chạy sẵn service vLLM ở ngầm mà không yêu cầu `--api-key`, bạn có thể dùng bất kỳ chuỗi text nào cho tham số `api_key` trong Python code).*
+
+
+**Không thể** chạy cùng lúc nhiều model LLM lớn đầy đủ trên 1 GPU RTX 5060 Ti (16GB VRAM) với vLLM thông thường, vì mỗi model 7B-8B đã chiếm từ 12GB–14GB VRAM để chứa weight và KV Cache.
+
+Tuy nhiên, bạn hoàn toàn có thể phục vụ nhiều nhu cầu/model trên cùng kết nối SSH qua các giải pháp kỹ thuật sau:
+
+---
+
+### Giải pháp 1: Dùng LoRA Adapter (Khuyên dùng - Chạy 1 Model nền, tải nhiều LoRA)
+
+Nếu bạn có nhiều phiên bản model fine-tune khác nhau (như 1 LoRA cho viết code, 1 LoRA cho chat tiếng Việt) từ cùng một model gốc (ví dụ Qwen 2.5 7B):
+
+vLLM cho phép bạn load **1 Model nền + nhiều LoRA Adapter cùng lúc** mà tốn rất ít VRAM:
+
+```bash
+python3 -m vllm.entrypoints.openai.api_server \
+  --model Qwen/Qwen2.5-7B-Instruct \
+  --enable-lora \
+  --lora-modules task-writer=/path/to/lora1 task-coder=/path/to/lora2 \
+  --host 0.0.0.0 \
+  --port 8000 \
+  --api-key my-secret-key
+
+```
+
+*Khi gọi API, bạn chỉ cần đổi tên `model` thành `"task-writer"` hoặc `"task-coder"`.*
+
+---
+
+### Giải pháp 2: Dùng Ollama (Tự động swap/chuyển đổi Model)
+
+Nếu bạn muốn dùng các model hoàn toàn khác nhau (ví dụ vừa dùng `llama3.1:8b`, vừa dùng `qwen2.5:7b`, vừa dùng `gemma2:9b`):
+
+1. **Khởi chạy Ollama Server:**
+```bash
+ollama serve
+
+```
+
+
+2. **Tải các model về sẵn:**
+```bash
+ollama pull llama3.1
+ollama pull qwen2.5
+
+```
+
+
+
+Ollama sẽ tự động **load/unload VRAM linh hoạt**: khi bạn gọi API model A, nó nạp model A vào GPU; khi bạn gọi API model B, nó sẽ xả model A khỏi VRAM và nạp model B vào.
+
+---
+
+### Bảng so sánh giải pháp
+
+| Phương pháp | Số Model chạy song song | Tốc độ chuyển Model | Tối ưu VRAM 16GB |
+| --- | --- | --- | --- |
+| **vLLM Standard** | 1 Model duy nhất | Phải tắt process chạy lại | Rất cao |
+| **vLLM + LoRA** | 1 Base Model + Nhiều LoRA | Tức thì (Concurrent) | Rất cao |
+| **Ollama** | Nhiều Model (Lần lượt) | Mất vài giây để swap VRAM | Tự động quản lý |
