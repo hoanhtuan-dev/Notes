@@ -21,6 +21,8 @@ cd /home/anhtuan/Apps/ViNotes
 
 ### 3. Script làm gì
 
+![4712814b-8a6a-450c-b221-6b8d50b81d8a.png](images/4712814b-8a6a-450c-b221-6b8d50b81d8a.png)
+
 | Bước | Mô tả | Output |
 |---|---|---|
 | `npm run build` | Build web production (Vite) vào `dist/` | `.js`, `.css`, PWA files |
