@@ -25,3 +25,18 @@ Tương lai không còn chỗ cho công cụ chỉ “bọc API”. Muốn tồn
 - **Bảo vệ bằng kiến trúc hybrid, mã nguồn mở và khả năng giảm cấp**  
 
 Nói ngắn: **biến kiểm soát chi phí thành sản phẩm, tri thức ngành thành kỹ thuật, và khả năng phục hồi thành kiến trúc.**
+
+
+**Tóm tắt ngắn gọn:**
+
+* **Hiện trạng (Android Đông Nam Á):** Mặc dù Android chiếm hơn 80% thị phần, chỉ **dưới 5%** người dùng tiếp cận được các công cụ AI nâng cao (OpenRouter, Runway, OpenArt) do rào cản về giao diện Web, phức tạp kỹ thuật và phương thức thanh toán USD/Visa.
+* **Cơ hội lớn cho App AI chuyên biệt (Vertical AI):** Làm "lớp trung gian" bọc lấy API AI, tối ưu giao diện đơn giản 1-chạm và tích hợp thanh toán nội địa.
+* **5 Ngành tiềm năng nhất:**
+1. **E-commerce & TikTok Shop:** Tự động tạo ảnh sản phẩm, làm video quảng cáo ngắn, viết mô tả bán hàng.
+2. **Creator Economy:** Làm poster, video ngắn theo trend địa phương, ghép sub/lồng tiếng tự động.
+3. **Nông nghiệp:** Quét ảnh chẩn đoán bệnh cây trồng, tư vấn canh tác bằng voice AI tiếng bản địa.
+4. **Giáo dục (EdTech):** Gia sư AI luyện giao tiếp ngoại ngữ, giải bài tập qua camera.
+5. **Tài chính MSME:** Quét hóa đơn/biên lai quản lý thu chi tự động cho nhà bán hàng nhỏ lẻ.
+
+
+* **Chìa khóa thành công:** Tối ưu 1-chạm di động + Thanh toán qua ví điện tử local/Google Play + Tối ưu ngôn ngữ bản địa + Giá gói cước siêu nhỏ (gói theo tuần/lượt dùng).
